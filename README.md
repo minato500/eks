@@ -62,27 +62,10 @@ The exercise is complete when:
 - the app is reachable through an ALB Ingress
 - metrics appear in Grafana
 
-## Suggested repository structure
+## repository structure
 
 - `charts/payment-service/`
 - `argocd/application.yaml`
 - `external-secrets/`
 - `iam/`
 - `observability/`
-
-## Starter files
-
-The following files provide a scaffold you can adapt:
-
-- [charts/payment-service/Chart.yaml](charts/payment-service/Chart.yaml)
-- [charts/payment-service/values.yaml](charts/payment-service/values.yaml)
-- [charts/payment-service/templates/deployment.yaml](charts/payment-service/templates/deployment.yaml)
-- [charts/payment-service/templates/service.yaml](charts/payment-service/templates/service.yaml)
-- [charts/payment-service/templates/serviceaccount.yaml](charts/payment-service/templates/serviceaccount.yaml)
-- [charts/payment-service/templates/ingress.yaml](charts/payment-service/templates/ingress.yaml)
-- [charts/payment-service/templates/servicemonitor.yaml](charts/payment-service/templates/servicemonitor.yaml)
-- [argocd/application.yaml](argocd/application.yaml)
-- [external-secrets/secretstore.yaml](external-secrets/secretstore.yaml)
-- [external-secrets/externalsecret.yaml](external-secrets/externalsecret.yaml)
-- [iam/irsa-trust-policy.json](iam/irsa-trust-policy.json)
-- [observability/servicemonitor.yaml](observability/servicemonitor.yaml)
