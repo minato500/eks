@@ -14,7 +14,7 @@ GitHub → GitHub Actions → ECR → Argo CD → EKS
 - Prometheus Operator / ServiceMonitor support
 - Grafana connected to the cluster metrics source
 
-## What you need to build
+## Build structure
 
 ### 1) Helm chart
 Create a chart for `payment-service` that includes at least:
