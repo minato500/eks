@@ -1,0 +1,49 @@
+replicaCount: 2
+
+image:
+  repository: <ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/payment-service
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  name: payment-service
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/payment-service-irsa
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: alb
+  host: payment.example.com
+  path: /
+  pathType: Prefix
+  scheme: internet-facing
+  targetType: ip
+  certificateArn: ""
+
+resources: {}
+
+env:
+  AWS_REGION: <REGION>
+  PAYMENT_SECRET_NAME: payment-service/prod
+
+externalSecret:
+  enabled: true
+  secretName: payment-service-secret
+  remoteKey: payment-service/prod
+
+metrics:
+  enabled: true
+  path: /metrics
+  port: 8080
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 70
